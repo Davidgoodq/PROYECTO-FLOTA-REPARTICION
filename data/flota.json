@@ -1,0 +1,130 @@
+[
+  {
+    "id": "M-01",
+    "tipo": "Moto",
+    "peso_max": 25.0,
+    "largo": 0.5,
+    "ancho": 0.4,
+    "alto": 0.4
+  },
+  {
+    "id": "C-01",
+    "tipo": "Camioneta",
+    "peso_max": 800.0,
+    "largo": 2.6,
+    "ancho": 1.7,
+    "alto": 1.6
+  },
+  {
+    "id": "C-02",
+    "tipo": "Camioneta",
+    "peso_max": 800.0,
+    "largo": 2.6,
+    "ancho": 1.7,
+    "alto": 1.6
+  },
+  {
+    "id": "C-03",
+    "tipo": "Camioneta",
+    "peso_max": 800.0,
+    "largo": 2.6,
+    "ancho": 1.7,
+    "alto": 1.6
+  },
+  {
+    "id": "C-04",
+    "tipo": "Camioneta",
+    "peso_max": 800.0,
+    "largo": 2.6,
+    "ancho": 1.7,
+    "alto": 1.6
+  },
+  {
+    "id": "C-05",
+    "tipo": "Camioneta",
+    "peso_max": 800.0,
+    "largo": 2.6,
+    "ancho": 1.7,
+    "alto": 1.6
+  },
+  {
+    "id": "C-06",
+    "tipo": "Camioneta",
+    "peso_max": 800.0,
+    "largo": 2.6,
+    "ancho": 1.7,
+    "alto": 1.6
+  },
+  {
+    "id": "C-07",
+    "tipo": "Camioneta",
+    "peso_max": 800.0,
+    "largo": 2.6,
+    "ancho": 1.7,
+    "alto": 1.6
+  },
+  {
+    "id": "C-08",
+    "tipo": "Camioneta",
+    "peso_max": 800.0,
+    "largo": 2.6,
+    "ancho": 1.7,
+    "alto": 1.6
+  },
+  {
+    "id": "C-09",
+    "tipo": "Camioneta",
+    "peso_max": 800.0,
+    "largo": 2.6,
+    "ancho": 1.7,
+    "alto": 1.6
+  },
+  {
+    "id": "C-10",
+    "tipo": "Camioneta",
+    "peso_max": 800.0,
+    "largo": 2.6,
+    "ancho": 1.7,
+    "alto": 1.6
+  },
+  {
+    "id": "C-11",
+    "tipo": "Camioneta",
+    "peso_max": 800.0,
+    "largo": 2.6,
+    "ancho": 1.7,
+    "alto": 1.6
+  },
+  {
+    "id": "C-12",
+    "tipo": "Camioneta",
+    "peso_max": 800.0,
+    "largo": 2.6,
+    "ancho": 1.7,
+    "alto": 1.6
+  },
+  {
+    "id": "C-13",
+    "tipo": "Camioneta",
+    "peso_max": 800.0,
+    "largo": 2.6,
+    "ancho": 1.7,
+    "alto": 1.6
+  },
+  {
+    "id": "C-14",
+    "tipo": "Camioneta",
+    "peso_max": 800.0,
+    "largo": 2.6,
+    "ancho": 1.7,
+    "alto": 1.6
+  },
+  {
+    "id": "C-15",
+    "tipo": "Camioneta",
+    "peso_max": 800.0,
+    "largo": 2.6,
+    "ancho": 1.7,
+    "alto": 1.6
+  }
+]

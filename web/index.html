@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Empresa de Transporte y Entregas - Ibagué</title>
+  <link rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="marca">
+      <span class="logo" id="logo"></span>
+      <div>
+        <h1>Empresa de Transporte y Entregas</h1>
+        <p>Optimización de flota, espacio, peso y rutas · Ibagué</p>
+      </div>
+    </div>
+    <div class="topbar-estado">
+      <div><strong id="estado-vehiculos">0</strong><span>vehículos</span></div>
+      <div><strong id="estado-paquetes">0</strong><span>paquetes</span></div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <!-- Panel de controles -->
+    <aside class="sidebar">
+      <section class="panel">
+        <h2>1 · Flota</h2>
+        <label class="campo">
+          <span>Tipo de vehículo</span>
+          <select id="tipo-vehiculo"></select>
+        </label>
+        <label class="campo">
+          <span>Cantidad</span>
+          <input type="number" id="cantidad-vehiculo" value="1" min="1">
+        </label>
+        <div class="fila-botones">
+          <button class="btn primario" id="btn-agregar-flota">Agregar</button>
+          <button class="btn peligro" id="btn-vaciar-flota">Vaciar</button>
+        </div>
+
+        <details class="sub-panel">
+          <summary>Vehículo personalizado</summary>
+          <label class="campo"><span>ID</span><input id="pv-id" placeholder="V-01"></label>
+          <label class="campo"><span>Tipo</span><input id="pv-tipo" placeholder="Furgón"></label>
+          <div class="grid-2">
+            <label class="campo"><span>Peso máx (kg)</span><input type="number" id="pv-peso" value="500"></label>
+            <label class="campo"><span>Largo (m)</span><input type="number" step="0.1" id="pv-largo" value="2.5"></label>
+            <label class="campo"><span>Ancho (m)</span><input type="number" step="0.1" id="pv-ancho" value="1.6"></label>
+            <label class="campo"><span>Alto (m)</span><input type="number" step="0.1" id="pv-alto" value="1.5"></label>
+          </div>
+          <button class="btn" id="btn-agregar-personalizado">Agregar personalizado</button>
+        </details>
+
+        <div class="chips" id="lista-flota"></div>
+      </section>
+
+      <section class="panel">
+        <h2>2 · Paquetes</h2>
+        <div class="grid-2">
+          <label class="campo"><span>Cantidad</span><input type="number" id="cantidad-paquetes" value="60" min="1"></label>
+          <label class="campo"><span>Semilla</span><input type="number" id="semilla-paquetes" placeholder="aleatoria"></label>
+        </div>
+        <div class="fila-botones">
+          <button class="btn primario" id="btn-generar">Generar CSV</button>
+          <button class="btn" id="btn-cargar-csv">Cargar CSV</button>
+          <button class="btn peligro" id="btn-vaciar-paquetes">Vaciar</button>
+        </div>
+        <div class="chips resumen" id="resumen-paquetes"></div>
+
+        <details class="sub-panel">
+          <summary>Insertar paquete manual</summary>
+          <div class="grid-2">
+            <label class="campo"><span>ID</span><input id="pq-id" placeholder="automático"></label>
+            <label class="campo"><span>Tipo</span>
+              <select id="pq-tipo">
+                <option>Sobre</option>
+                <option>Caja pequeña</option>
+                <option selected>Caja mediana</option>
+                <option>Caja grande</option>
+                <option>Paquete voluminoso</option>
+              </select>
+            </label>
+            <label class="campo"><span>Peso (kg)</span><input type="number" step="0.01" id="pq-peso" value="5"></label>
+            <label class="campo"><span>Alto (m)</span><input type="number" step="0.01" id="pq-alto" value="0.4"></label>
+            <label class="campo"><span>Ancho (m)</span><input type="number" step="0.01" id="pq-ancho" value="0.35"></label>
+            <label class="campo"><span>Profundo (m)</span><input type="number" step="0.01" id="pq-profundo" value="0.3"></label>
+          </div>
+          <label class="campo"><span>Barrio de entrega (Ibagué)</span>
+            <select id="pq-barrio"></select>
+          </label>
+          <button class="btn" id="btn-insertar-paquete">Insertar paquete</button>
+        </details>
+      </section>
+
+      <button class="btn optimizar" id="btn-optimizar">Optimizar entregas</button>
+    </aside>
+
+    <!-- Resultados -->
+    <main class="resultados">
+      <div class="banner-warn" id="aviso-sin-asignar" hidden></div>
+      <div class="resumen-cards" id="resumen-cards" hidden>
+        <div class="mini-card"><span>Vehículos usados (de la flota)</span><strong id="r-usados">0</strong></div>
+        <div class="mini-card"><span>Paquetes asignados</span><strong id="r-asignados">0</strong></div>
+        <div class="mini-card"><span>Distancia optimizada</span><strong id="r-opt">0 km</strong></div>
+        <div class="mini-card"><span>Distancia sin optimizar</span><strong id="r-sin">0 km</strong></div>
+        <div class="mini-card acento"><span>Ahorro</span><strong id="r-ahorro">0%</strong></div>
+      </div>
+
+      <div class="tabs" id="tabs"></div>
+      <div id="detalle-vehiculo" class="detalle-vehiculo">
+        <div class="placeholder">
+          <span class="placeholder-logo" id="placeholder-logo"></span>
+          <p>Configura la flota y genera paquetes, luego pulsa <strong>Optimizar entregas</strong>.</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div class="aviso" id="aviso"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
